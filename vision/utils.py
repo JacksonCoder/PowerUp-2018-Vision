@@ -20,6 +20,8 @@ def get_args():
     parser.add_argument("-p", "--roborio-port", help="the port of the roboRIO's UDP server")
     parser.add_argument("-ma", "--min-area", type=int, help="minimum area for blobs")
     parser.add_argument("-mx", "--max-area", type=int, help="maximum area for blobs")
+    parser.add_argument("-hf", "--horizontal-fov", type=float, help="horizontal fov of camera")
+    parser.add_argument("-vf", "--vertical-fov", type=float, help="vertical fov of camera")
     parser.add_argument("-l", "--lower-color", action="append", nargs="+", type=int, help="lower color threshold in HSV")
     parser.add_argument("-u", "--upper-color", action="append", nargs="+", type=int, help="upper color threshold in HSV")
     parser.add_argument("-t", "--tuning", action="store_true", help="open in tuning mode")

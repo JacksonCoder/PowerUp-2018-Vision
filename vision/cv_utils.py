@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import cv2
+import math
 from . import args
 
 verbose = args["verbose"]
-
+horizontal_fov = args["horizontal_fov"]
+vertical_fov = args["vertical_fov"]
 
 def process_image(im, x1, y1, w1, h1):
     # Get image height and width
@@ -18,13 +20,23 @@ def process_image(im, x1, y1, w1, h1):
         print("[Goal] center: (%d, %d)" % (center_x, center_y))
 
     # Find pixels away from center
-    offset_x = int(width / 2 - center_x) * -1
-    offset_y = int(height / 2 - center_y)
+    offset_x_pixels = width / 2 - center_x * -1
+    offset_y_pixels = height / 2 - center_y
+
+    # Convert pixels from center to degrees
+    offset_x_degrees = round(offset_x_pixels / horizontal_fov, 2)
+    offset_y_degrees = round(offset_y_pixels / vertical_fov, 2)
+
+    # Calculate distance from target
+    dist_width = w1 / (2 * math.tan(math.radians(width / (horizontal_fov * 2))))
+    dist_height = h1 / (2 * math.tan(math.radians(height / (vertical_fov * 2))))
+
+    print(dist_width, dist_height)
 
     if verbose:
-        print("[Goal] offset: (%d, %d)" % (offset_x, offset_y))
+        print("[Goal] offset degrees: (%d, %d)" % (offset_x_degrees, offset_y_degrees))
 
-    return offset_x, offset_y
+    return offset_x_degrees, offset_y_degrees
 
 
 def draw_images(im, x, y, w, h):

@@ -54,8 +54,8 @@ class Vision:
                 offset_x, offset_y = cv_utils.process_image(im, x1, y1, w1, h1)
 
                 self.network.send({"found": True,
-                                   "offset_x": offset_x,
-                                   "offset_y": offset_y})
+                                   "xOffset": offset_x,
+                                   "yOffset": offset_y})
 
                 if self.display:
                     # Draw image details
