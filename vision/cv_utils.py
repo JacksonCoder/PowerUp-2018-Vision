@@ -36,7 +36,7 @@ def process_image(im, x1, y1, w1, h1):
     dist_width = (w1 / (target_width * 2.0 * width_value)) ** -1
     dist_height = (h1 / (target_height * 2.0 * height_value)) ** -1
 
-    dist_avg = math.round((dist_width + dist_height) / 2.0, 2)
+    dist_avg = (dist_width + dist_height) / 2.0
 
     if verbose:
         print("[Goal] offset degrees: (%d, %d)" % (offset_x_degrees, offset_y_degrees))
