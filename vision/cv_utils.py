@@ -10,6 +10,7 @@ vertical_fov = args["vertical_fov"]
 target_width = args["target_width"]
 target_height = args["target_height"]
 
+
 def process_image(im, x1, y1, w1, h1):
     # Get image height and width
     height, width = im.shape[:2]
