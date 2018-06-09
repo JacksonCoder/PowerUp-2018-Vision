@@ -23,8 +23,8 @@ def process_image(im, x1, y1, w1, h1):
         print("[Goal] center: (%d, %d)" % (center_x, center_y))
 
     # Find pixels away from center
-    offset_x_pixels = width / 2 - center_x * -1
-    offset_y_pixels = height / 2 - center_y
+    offset_x_pixels = width / 2.0 - center_x * -1
+    offset_y_pixels = height / 2.0 - center_y
 
     # Convert pixels from center to degrees
     offset_x_degrees = offset_x_pixels / horizontal_fov
@@ -40,7 +40,7 @@ def process_image(im, x1, y1, w1, h1):
 
     if verbose:
         print("[Goal] offset degrees: (%d, %d)" % (offset_x_degrees, offset_y_degrees))
-        print("[Goal] distance: (w: %d, h: %d, avg: %d)" % (dist_width, dist_height, dist_avg))
+        print("[Goal] distance: (w: %f, h: %f, avg: %f)" % (dist_width, dist_height, dist_avg))
 
     return offset_x_degrees, offset_y_degrees, dist_avg
 
