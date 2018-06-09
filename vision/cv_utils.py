@@ -8,6 +8,9 @@ verbose = args["verbose"]
 horizontal_fov = args["horizontal_fov"]
 vertical_fov = args["vertical_fov"]
 
+one_m_hz = 1154
+one_m_vr = 760
+
 def process_image(im, x1, y1, w1, h1):
     # Get image height and width
     height, width = im.shape[:2]
@@ -31,7 +34,7 @@ def process_image(im, x1, y1, w1, h1):
     dist_width = w1 / (2 * math.tan(math.radians(width / (horizontal_fov * 2))))
     dist_height = h1 / (2 * math.tan(math.radians(height / (vertical_fov * 2))))
 
-    print(dist_width, dist_height)
+    print((dist_width/one_m_hz)**-1, (dist_height/one_m_vr)**-1)
 
     if verbose:
         print("[Goal] offset degrees: (%d, %d)" % (offset_x_degrees, offset_y_degrees))
