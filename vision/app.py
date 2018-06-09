@@ -51,9 +51,10 @@ class Vision:
                     print("[Cube] x: %d, y: %d, w: %d, h: %d, total "
                           "area: %d" % (x1, y1, w1, h1, area))
 
-                offset_x, offset_y = cv_utils.process_image(im, x1, y1, w1, h1)
+                offset_x, offset_y, distance = cv_utils.process_image(im, x1, y1, w1, h1)
 
                 self.network.send({"found": True,
+                                   "distance": distance,
                                    "xOffset": offset_x,
                                    "yOffset": offset_y})
 
